@@ -31,57 +31,57 @@ const continueWatching = [
 const mobileApps = [
   {
     title: "app 1",
-    image: require("../assets/games/show1.png"),
+    image: require("../assets/games/app1.png"),
     progress: 60,
   },
 
   {
     title: "app 2",
-    image: require("../assets/games/show2.png"),
+    image: require("../assets/games/app2.png"),
     progress: 30,
   },
 
   {
     title: "app 3",
-    image: require("../assets/games/show3.png"),
+    image: require("../assets/games/app3.png"),
     progress: 80,
   },
 ];
 const gamesRanked = [
   {
     title: "game 1",
-    image: require("../assets/games/show1.png"),
+    image: require("../assets/games/game1.png"),
     progress: 60,
   },
 
   {
     title: "game 2",
-    image: require("../assets/games/show2.png"),
+    image: require("../assets/games/game2.png"),
     progress: 30,
   },
 
   {
     title: "game 3",
-    image: require("../assets/games/show3.png"),
+    image: require("../assets/games/game3.png"),
     progress: 80,
   },
 ];
 const animes = [
   {
     title: "Show 1",
-    image: require("../assets/anime/show1.png"),
+    image: require("../assets/anime/anime1.png"),
     progress: 60,
   },
 
   {
     title: "Show 2",
-    image: require("../assets/anime/show2.png"),
+    image: require("../assets/anime/anime2.png"),
     progress: 30,
   },
 
   {
     title: "Show 3",
-    image: require("../assets/anime/show3.png"),
+    image: require("../assets/anime/anime3.png"),
     progress: 80,
   },
 ];
@@ -242,15 +242,15 @@ export default function HomeScreen() {
       <View style={styles.bottomNav}>
         {/* Home */}
         <View style={styles.navItem}>
-          <View style={styles.navText}>Home</View>
+          <Text style={styles.navText}>Home</Text>
         </View>
         {/* Search */}
         <View style={styles.navItem}>
-          <View style={styles.navText}>Search</View>
+          <Text style={styles.navText}>Search</Text>
         </View> 
         {/* My Netflix */}
         <View style={styles.navItem}>
-          <View style={styles.navText}>My Netflix</View>
+          <Text style={styles.navText}>My Netflix</Text>
         </View>
       </View>
 
@@ -273,22 +273,32 @@ const styles = StyleSheet.create({
 
 
   header: {
-    // Your styles
+    flexDirection: "row",
+    alignItems: "center",
+    paddingHorizontal: 15,
+    paddingVertical: 15,
   },
 
 
   logo: {
-    // Your styles
+    fontSize: 30,
+    fontWeight: "bold",
+    color: "red",
+    marginRight: 15,
   },
 
 
   title: {
-    // Your styles
+    fontSize: 20,
+    fontWeight: "bold",
+    color: "white",
   },
 
 
   headerIcons: {
-    // Your styles
+    flexDirection: "row",
+    marginLeft: "auto",
+    gap: 15,
   },
 
 
@@ -341,14 +351,22 @@ const styles = StyleSheet.create({
 
 
   bottomNav: {
-    // Your styles
+    height: 70,
+    backgroundColor: "black",
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center",
+    borderTopWidth: 1,
+    borderTopColor: "gray",
   },
 
   navItem: {
-
+    alignItems: "center",
+    justifyContent: "center",
   },
 
   navText: {
-
+    fontSize: 12,
+    color: "white",
   },
 });
