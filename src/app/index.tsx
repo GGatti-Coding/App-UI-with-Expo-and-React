@@ -32,57 +32,51 @@ const mobileApps = [
   {
     title: "app 1",
     image: require("../assets/games/app1.png"),
-    progress: 60,
   },
 
   {
     title: "app 2",
     image: require("../assets/games/app2.png"),
-    progress: 30,
   },
 
   {
     title: "app 3",
     image: require("../assets/games/app3.png"),
-    progress: 80,
   },
 ];
 const gamesRanked = [
   {
     title: "game 1",
     image: require("../assets/games/game1.png"),
-    progress: 60,
+    rank: 1,
   },
 
   {
     title: "game 2",
     image: require("../assets/games/game2.png"),
-    progress: 30,
+    rank: 2,
   },
 
   {
     title: "game 3",
     image: require("../assets/games/game3.png"),
-    progress: 80,
+    rank: 3,
   },
 ];
 const animes = [
   {
     title: "Show 1",
     image: require("../assets/anime/anime1.png"),
-    progress: 60,
   },
 
   {
     title: "Show 2",
     image: require("../assets/anime/anime2.png"),
-    progress: 30,
   },
 
   {
     title: "Show 3",
     image: require("../assets/anime/anime3.png"),
-    progress: 80,
   },
 ];
 
@@ -105,19 +99,19 @@ export default function HomeScreen() {
         {/* Categories */}
         <View style={styles.categories}>
           <View style={styles.category}>
-            <Text>Shows</Text>
+            <Text style={styles.categoryText}>Shows</Text>
           </View>
 
           <View style={styles.category}>
-            <Text>Movies</Text>
+            <Text style={styles.categoryText}>Movies</Text>
           </View>
 
           <View style={styles.category}>
-            <Text>Games</Text>
+            <Text style={styles.categoryText}>Games</Text>
           </View>
 
           <View style={styles.category}>
-            <Text>Podcasts</Text>
+            <Text style={styles.categoryText}>Podcasts</Text>
           </View>
         </View>
 
@@ -194,7 +188,7 @@ export default function HomeScreen() {
 
             {gamesRanked.map((show) => (
 
-              <View style={styles.card}>
+              <View style={styles.cardRank}>
                 <Image
                   source={show.image}
                   style={styles.cardImage}
@@ -203,8 +197,11 @@ export default function HomeScreen() {
                 <Text style={styles.cardTitle}>
                   {show.title}
                 </Text>
-              </View>
 
+                <Text style={styles.rankText}>
+                  {show.rank}
+                </Text>
+              </View>
             ))}
 
           </ScrollView>
@@ -271,14 +268,12 @@ const styles = StyleSheet.create({
     backgroundColor: "black",
   },
 
-
   header: {
     flexDirection: "row",
     alignItems: "center",
     paddingHorizontal: 15,
     paddingVertical: 15,
   },
-
 
   logo: {
     fontSize: 30,
@@ -287,13 +282,11 @@ const styles = StyleSheet.create({
     marginRight: 15,
   },
 
-
   title: {
     fontSize: 20,
     fontWeight: "bold",
     color: "white",
   },
-
 
   headerIcons: {
     flexDirection: "row",
@@ -301,41 +294,67 @@ const styles = StyleSheet.create({
     gap: 15,
   },
 
-
   categories: {
-    // Your styles
+    flexDirection: "row",
+    paddingTop: 15,
+    gap: 8,
   },
-
 
   category: {
-    // Your styles
+    backgroundColor: "black",
+    borderWidth: 1,
+    borderColor: "gray",
+    borderRadius: 20,
+    paddingHorizontal: 16,
+    paddingVertical: 8,
   },
 
+  categoryText: {
+    fontSize: 14,
+    color: "white",
+  },
 
   sectionTitle: {
-    // Your styles
+    color: "white",
+    fontSize: 20,
+    fontWeight: "bold",
+    marginLeft: 15,
+    marginTop: 20,
+    marginBottom: 10,
   },
-
 
   card: {
-    // Your styles
+    width: 140,
+    marginRight: 10,
   },
-
 
   cardImage: {
-    // Your styles
+    width: "100%",
+    height: 200,
+    borderRadius: 6,
   },
-
 
   cardTitle: {
-    // Your styles
+    fontSize: 14,
+    color: "white",
+    marginTop: 6,
   },
 
-
-  cardCategory: {
-    // Your styles
+  cardRank: {
+    width: 150,
+    marginRight: 10,
+    position: "relative",
+    paddingLeft: 25,
   },
 
+  rankText: {
+    position: "absolute",
+    left: 0,
+    bottom: 20,
+    fontSize: 80,
+    fontWeight: "bold",
+    color: "gray",
+  },
 
   cardProgress: {
     width: "100%",
@@ -343,12 +362,10 @@ const styles = StyleSheet.create({
     backgroundColor: "gray",
   },
 
-
   progressFill: {
     height: "100%",
     backgroundColor: "white",
   },
-
 
   bottomNav: {
     height: 70,
