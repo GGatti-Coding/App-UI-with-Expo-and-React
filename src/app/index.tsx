@@ -8,6 +8,27 @@ import {
   Alert,
 } from "react-native";
 
+/* Arrays for the cards */
+const continueWatching = [
+  {
+    title: "Show 1",
+    image: require("../assets/show1.png"),
+    progress: 60,
+  },
+
+  {
+    title: "Show 2",
+    image: require("../assets/show2.png"),
+    progress: 30,
+  },
+
+  {
+    title: "Show 3",
+    image: require("../assets/show3.png"),
+    progress: 80,
+  },
+];
+
 export default function HomeScreen() {
   return (
     <View style={styles.container}>
@@ -85,11 +106,7 @@ export default function HomeScreen() {
 
           <ScrollView horizontal>
 
-            {/* GAME CARD 1 */}
-
-            {/* GAME CARD 2 */}
-
-            {/* GAME CARD 3 */}
+           ...
 
           </ScrollView>
         </View>
@@ -102,11 +119,7 @@ export default function HomeScreen() {
 
           <ScrollView horizontal>
 
-            {/* GAME CARD 1 */}
-
-            {/* GAME CARD 2 */}
-
-            {/* GAME CARD 3 */}
+            ...
 
           </ScrollView>
         </View>
@@ -119,11 +132,7 @@ export default function HomeScreen() {
 
           <ScrollView horizontal>
 
-            {/* ANIME CARD 1 */}
-
-            {/* ANIME CARD 2 */}
-
-            {/* ANIME CARD 3 */}
+            ...
 
           </ScrollView>
         </View>
@@ -133,8 +142,11 @@ export default function HomeScreen() {
       {/* Bottom Navigation */}
       <View style={styles.bottomNav}>
         {/* Home */}
+
         {/* Search */}
+
         {/* My Netflix */}
+
       </View>
 
       {/* Alert Button */}
@@ -228,23 +240,3 @@ const styles = StyleSheet.create({
     // Your styles
   },
 });
-
-const continueWatching = [
-  {
-    title: "Show 1",
-    image: require("../assets/show1.png"),
-    progress: 60,
-  },
-
-  {
-    title: "Show 2",
-    image: require("../assets/show2.png"),
-    progress: 30,
-  },
-
-  {
-    title: "Show 3",
-    image: require("../assets/show3.png"),
-    progress: 80,
-  },
-];
