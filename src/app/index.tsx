@@ -105,78 +105,142 @@ export default function GroupProfileScreen() {
 // Styles
 const styles = StyleSheet.create({
   screen: {
-    // TODO: styling
+    flex: 1,
+    backgroundColor: '#fff',
   },
   container: {
-    // TODO: styling
+    flex: 1,
   },
   header: {
-    // TODO: styling
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingTop: 55,
+    paddingBottom: 12,
+    paddingHorizontal: 16,
   },
   headerTitleBlock: {
-    // TODO: styling
+    alignItems: 'center',
   },
   headerTitle: {
-    // TODO: styling
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#000',
   },
   headerSubtitle: {
-    // TODO: styling
+    fontSize: 12,
+    color: '#8e8e8e',
+    marginTop: 2,
   },
   profileRow: {
-    // TODO: styling
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 16,
+    marginTop: 8,
   },
   avatarRing: {
-    // TODO: styling
+    width: 78,
+    height: 78,
+    borderRadius: 39,
+    borderWidth: 3,
+    borderColor: '#f97316',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   avatarCircle: {
-    // TODO: styling
+    width: 66,
+    height: 66,
+    borderRadius: 33,
+    backgroundColor: '#2f8fe0',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   avatarText: {
-    // TODO: styling
+    color: '#fff',
+    fontWeight: 'bold',
+    fontSize: 13,
+    textAlign: 'center',
+    lineHeight: 15,
   },
   statsRow: {
-    // TODO: styling
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    marginLeft: 12,
   },
   statBlock: {
-    // TODO: styling
+    alignItems: 'center',
   },
   statNumber: {
-    // TODO: styling
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#000',
   },
   statLabel: {
-    // TODO: styling
+    fontSize: 13,
+    color: '#333',
+    marginTop: 2,
   },
   bioSection: {
-    // TODO: styling
+    alignItems: 'flex-start',
+    paddingTop: 12,
+    paddingHorizontal: 16,
   },
   displayName: {
-    // TODO: styling
+    fontSize: 14,
+    fontWeight: 'bold',
+    color: '#000',
   },
   bioText: {
-    // TODO: styling
+    fontSize: 13,
+    color: '#000',
+    marginTop: 2,
+    textAlign: 'left',
   },
   memberButtonWrapper: {
-    // TODO: styling
+    paddingHorizontal: 16,
+    paddingTop: 14,
   },
   memberButton: {
-    // TODO: styling
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 1,
+    borderColor: '#dbdbdb',
+    borderRadius: 8,
+    paddingVertical: 8,
   },
   memberButtonText: {
-    // TODO: styling
+    fontWeight: '600',
+    fontSize: 14,
+    color: '#000',
+    marginRight: 4,
   },
   grid: {
-    // TODO: styling
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    marginTop: 16,
   },
   gridItem: {
-    // TODO: styling
+    width: '33.333%',
+    aspectRatio: 1,
+    padding: 1,
   },
   gridImage: {
-    // TODO: styling
+    width: '100%',
+    height: '100%',
   },
   alertButtonWrapper: {
-    // TODO: styling
+    paddingHorizontal: 16,
+    paddingVertical: 24,
   },
   tabBar: {
-    // TODO: styling
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    paddingVertical: 12,
+    borderTopWidth: 1,
+    borderTopColor: '#e5e5e5',
+    backgroundColor: '#fff',
   },
 });
