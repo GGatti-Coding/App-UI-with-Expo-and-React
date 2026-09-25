@@ -1,1 +1,1 @@
-App UI with Expo and React Native.
+Updated skeleton using Pressable and tab placeholders.
