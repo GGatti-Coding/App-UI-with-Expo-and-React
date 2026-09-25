@@ -7,76 +7,87 @@ import {
   Text,
   View,
 } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 
 /* Arrays for the cards */
 const continueWatching = [
   {
-    title: "Show 1",
-    image: require("../assets/continue/show1.png"),
+    title: "JJBA",
+    image: require("../../assets/images/continue/show1.jpg"),
     progress: 60,
   },
 
   {
-    title: "Show 2",
-    image: require("../assets/continue/show2.png"),
+    title: "Saiki K",
+    image: require("../../assets/images/continue/show2.jpg"),
     progress: 30,
   },
 
   {
-    title: "Show 3",
-    image: require("../assets/continue/show3.png"),
+    title: "Pokemon",
+    image: require("../../assets/images/continue/show3.jpg"),
     progress: 80,
   },
 ];
 const mobileApps = [
   {
-    title: "app 1",
-    image: require("../assets/games/app1.png"),
+    title: "Solitaire",
+    image: require("../../assets/images/games/games1.jpg"),
   },
 
   {
-    title: "app 2",
-    image: require("../assets/games/app2.png"),
+    title: "Bloons td6",
+    image: require("../../assets/images/games/games2.jpg"),
   },
 
   {
-    title: "app 3",
-    image: require("../assets/games/app3.png"),
+    title: "Exploding Kittens",
+    image: require("../../assets/images/games/games4.png"),
+  },
+
+  {
+    title: "Football Manager",
+    image: require("../../assets/images/games/games3.png"),
   },
 ];
 const gamesRanked = [
   {
-    title: "game 1",
-    image: require("../assets/games/game1.png"),
+    title: "Bloons td6",
+    image: require("../../assets/images/games/games2.jpg"),
     rank: 1,
   },
 
   {
-    title: "game 2",
-    image: require("../assets/games/game2.png"),
+    title: "Football Manager",
+    image: require("../../assets/images/games/games3.png"),
     rank: 2,
   },
 
   {
-    title: "game 3",
-    image: require("../assets/games/game3.png"),
+    title: "GTA 6",
+    image: require("../../assets/images/games/games5.jpg"),
     rank: 3,
   },
 ];
 const animes = [
   {
-    title: "Show 1",
-    image: require("../assets/anime/anime1.png"),
+    title: "Steel Ball Run",
+    image: require("../../assets/images/anime/animes1.jpg"),
   },
 
   {
-    title: "Show 2",
-    image: require("../assets/anime/anime2.png"),
+    title: "Death Note",
+    image: require("../../assets/images/anime/animes2.jpg"),
   },
 
   {
-    title: "Show 3",
-    image: require("../assets/anime/anime3.png"),
+    title: "Sakamoto Days",
+    image: require("../../assets/images/anime/animes3.jpg"),
+  },
+
+  {
+    title: "Saiki K",
+    image: require("../../assets/images/anime/animes4.jpg"),
   },
 ];
 
@@ -91,8 +102,8 @@ export default function HomeScreen() {
           <Text style={styles.title}>Home</Text>
 
           <View style={styles.headerIcons}>
-            <Text>Downloads</Text>
-            <Text>Notifications</Text>
+            <Ionicons name="download-outline" size={25} color="white" />
+            <Ionicons name="notifications-outline" size={25} color="white" />
           </View>
         </View>
 
@@ -160,7 +171,7 @@ export default function HomeScreen() {
 
           <ScrollView horizontal>
 
-           {mobileApps.map((show) => (
+            {mobileApps.map((show) => (
 
               <View style={styles.card}>
                 <Image
@@ -215,7 +226,7 @@ export default function HomeScreen() {
 
           <ScrollView horizontal>
 
-            {gamesRanked.map((show) => (
+            {animes.map((show) => (
 
               <View style={styles.card}>
                 <Image
@@ -239,14 +250,17 @@ export default function HomeScreen() {
       <View style={styles.bottomNav}>
         {/* Home */}
         <View style={styles.navItem}>
+          <Ionicons name="home" size={24} color="white" />
           <Text style={styles.navText}>Home</Text>
         </View>
         {/* Search */}
         <View style={styles.navItem}>
+          <Ionicons name="search" size={24} color="white" />
           <Text style={styles.navText}>Search</Text>
-        </View> 
+        </View>
         {/* My Netflix */}
         <View style={styles.navItem}>
+          <Ionicons name="person" size={24} color="white" />
           <Text style={styles.navText}>My Netflix</Text>
         </View>
       </View>
@@ -273,6 +287,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingHorizontal: 15,
     paddingVertical: 15,
+    marginLeft: 3,
   },
 
   logo: {
@@ -291,13 +306,16 @@ const styles = StyleSheet.create({
   headerIcons: {
     flexDirection: "row",
     marginLeft: "auto",
+    paddingTop: 5,
     gap: 15,
   },
 
   categories: {
     flexDirection: "row",
-    paddingTop: 15,
+    paddingTop: 5,
     gap: 8,
+    marginRight: 10,
+    marginLeft: 5,
   },
 
   category: {
@@ -324,13 +342,14 @@ const styles = StyleSheet.create({
   },
 
   card: {
-    width: 140,
-    marginRight: 10,
+    width: 120,
+    marginRight: 5,
+    marginLeft: 10,
   },
 
   cardImage: {
     width: "100%",
-    height: 200,
+    height: 120,
     borderRadius: 6,
   },
 
@@ -353,7 +372,10 @@ const styles = StyleSheet.create({
     bottom: 20,
     fontSize: 80,
     fontWeight: "bold",
-    color: "gray",
+    color: "white",
+    textShadowColor: "gray",
+    textShadowOffset: { width: 4, height: 4 },
+    textShadowRadius: 7,
   },
 
   cardProgress: {
@@ -368,13 +390,21 @@ const styles = StyleSheet.create({
   },
 
   bottomNav: {
-    height: 70,
+    position: "absolute",
+    bottom: 50,
+    alignSelf: "center",
+
+    height: 60,
+    width: "70%",
+
     backgroundColor: "black",
+    borderRadius: 30,
+    borderWidth: 1,
+    borderColor: "gray",
+
     flexDirection: "row",
     justifyContent: "space-around",
     alignItems: "center",
-    borderTopWidth: 1,
-    borderTopColor: "gray",
   },
 
   navItem: {
