@@ -7,6 +7,9 @@ import {
     Text,
     View,
 } from "react-native";
+import { categories } from "@/data/categories";
+
+
 export default function RootLayout() {
     return <View style={styles.container}>
         {/* Header */}
@@ -24,21 +27,11 @@ export default function RootLayout() {
         {/* Categories */}
         <ScrollView horizontal>
             <View style={styles.categories}>
-                <View style={styles.category}>
-                    <Text style={styles.categoryText}>Shows</Text>
-                </View>
-
-                <View style={styles.category}>
-                    <Text style={styles.categoryText}>Movies</Text>
-                </View>
-
-                <View style={styles.category}>
-                    <Text style={styles.categoryText}>Games</Text>
-                </View>
-
-                <View style={styles.category}>
-                    <Text style={styles.categoryText}>Podcasts</Text>
-                </View>
+                {categories.map((cat) => (
+                    <View key={cat} style={styles.category}>
+                        <Text style={styles.categoryText}>{cat}</Text>
+                    </View>
+                ))}
             </View>
         </ScrollView>
 
