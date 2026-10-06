@@ -3,15 +3,14 @@ Group 10 - Guilherme, Jon, Yassine, Jonah, Simon
 All 5 five of us made a different version but this is the one we decided on as a group
 This is a copy of Netflix Home Page
 */
+import { animes, continueWatching, mobileApps } from "@/data/shows";
 import {
-  Button,
   Image,
   ScrollView,
   StyleSheet,
   Text,
-  View,
+  View
 } from "react-native";
-import { continueWatching, animes, mobileApps } from "../../data/shows";
 
 export default function HomeScreen() {
   return (

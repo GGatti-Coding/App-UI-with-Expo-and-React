@@ -1,3 +1,4 @@
+import { Ionicons } from "@expo/vector-icons";
 import {
     Alert,
     Button,
@@ -6,8 +7,6 @@ import {
     Text,
     View,
 } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
-
 export default function RootLayout() {
     return <View style={styles.container}>
         {/* Header */}
