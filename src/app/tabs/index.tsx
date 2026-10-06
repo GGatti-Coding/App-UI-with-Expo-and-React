@@ -26,7 +26,7 @@ export default function HomeScreen() {
 
             {continueWatching.map((show) => (
 
-              <View style={styles.card}>
+              <View key={show.id} style={styles.card}>
                 <Image
                   source={show.image}
                   style={styles.cardImage}
@@ -63,7 +63,7 @@ export default function HomeScreen() {
 
             {mobileApps.map((game) => (
 
-              <View style={styles.card}>
+              <View key={game.id} style={styles.card}>
                 <Image
                   source={game.image}
                   style={styles.cardImage}
@@ -91,7 +91,7 @@ export default function HomeScreen() {
               .filter((game) => { game.rank != undefined })
               .map((game) => (
 
-                <View style={styles.cardRank}>
+                <View key={game.id} style={styles.cardRank}>
                   <Image
                     source={game.image}
                     style={styles.cardImage}
@@ -120,7 +120,7 @@ export default function HomeScreen() {
 
             {animes.map((show) => (
 
-              <View style={styles.card}>
+              <View key={show.id} style={styles.card}>
                 <Image
                   source={show.image}
                   style={styles.cardImage}
