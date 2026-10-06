@@ -11,89 +11,7 @@ import {
   Text,
   View,
 } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
-
-/* Arrays for the cards */
-const continueWatching = [
-  {
-    title: "JJBA",
-    image: require("../../assets/images/continue/show1.jpg"),
-    progress: 60,
-  },
-
-  {
-    title: "Saiki K",
-    image: require("../../assets/images/continue/show2.jpg"),
-    progress: 30,
-  },
-
-  {
-    title: "Pokemon",
-    image: require("../../assets/images/continue/show3.jpg"),
-    progress: 80,
-  },
-];
-const mobileApps = [
-  {
-    title: "Solitaire",
-    image: require("../../assets/images/games/games1.jpg"),
-  },
-
-  {
-    title: "Bloons td6",
-    image: require("../../assets/images/games/games2.jpg"),
-  },
-
-  {
-    title: "Exploding Kittens",
-    image: require("../../assets/images/games/games4.png"),
-  },
-
-  {
-    title: "Football Manager",
-    image: require("../../assets/images/games/games3.png"),
-  },
-];
-const gamesRanked = [
-  {
-    title: "Bloons td6",
-    image: require("../../assets/images/games/games2.jpg"),
-    rank: 1,
-  },
-
-  {
-    title: "Football Manager",
-    image: require("../../assets/images/games/games3.png"),
-    rank: 2,
-  },
-
-  {
-    title: "GTA 6",
-    image: require("../../assets/images/games/games5.jpg"),
-    rank: 3,
-  },
-];
-const animes = [
-  {
-    title: "Steel Ball Run",
-    image: require("../../assets/images/anime/animes1.jpg"),
-  },
-
-  {
-    title: "Death Note",
-    image: require("../../assets/images/anime/animes2.jpg"),
-  },
-
-  {
-    title: "Sakamoto Days",
-    image: require("../../assets/images/anime/animes3.jpg"),
-  },
-
-  {
-    title: "Saiki K",
-    image: require("../../assets/images/anime/animes4.jpg"),
-  },
-];
+import { continueWatching, animes, mobileApps } from "../../data/shows";
 
 export default function HomeScreen() {
   return (
@@ -120,7 +38,7 @@ export default function HomeScreen() {
                     style={[
                       styles.progressFill,
                       {
-                        width: `${show.progress}%`,
+                        width: `${show.progress ?? 0}%`,
                       }
                     ]}
                   />
@@ -144,16 +62,16 @@ export default function HomeScreen() {
 
           <ScrollView horizontal>
 
-            {mobileApps.map((show) => (
+            {mobileApps.map((game) => (
 
               <View style={styles.card}>
                 <Image
-                  source={show.image}
+                  source={game.image}
                   style={styles.cardImage}
                 />
 
                 <Text style={styles.cardTitle}>
-                  {show.title}
+                  {game.title}
                 </Text>
               </View>
 
@@ -170,23 +88,25 @@ export default function HomeScreen() {
 
           <ScrollView horizontal>
 
-            {gamesRanked.map((show) => (
+            {mobileApps
+              .filter((game) => { game.rank != undefined })
+              .map((game) => (
 
-              <View style={styles.cardRank}>
-                <Image
-                  source={show.image}
-                  style={styles.cardImage}
-                />
+                <View style={styles.cardRank}>
+                  <Image
+                    source={game.image}
+                    style={styles.cardImage}
+                  />
 
-                <Text style={styles.cardTitle}>
-                  {show.title}
-                </Text>
+                  <Text style={styles.cardTitle}>
+                    {game.title}
+                  </Text>
 
-                <Text style={styles.rankText}>
-                  {show.rank}
-                </Text>
-              </View>
-            ))}
+                  <Text style={styles.rankText}>
+                    {game.rank}
+                  </Text>
+                </View>
+              ))}
 
           </ScrollView>
         </View>
