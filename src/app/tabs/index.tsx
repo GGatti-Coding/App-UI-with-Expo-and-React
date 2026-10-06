@@ -88,7 +88,7 @@ export default function HomeScreen() {
           <ScrollView horizontal>
 
             {mobileApps
-              .filter((game) => { game.rank != undefined })
+              .filter((game) => game.rank != undefined )
               .map((game) => (
 
                 <View key={game.id} style={styles.cardRank}>

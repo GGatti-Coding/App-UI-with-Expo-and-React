@@ -1,3 +1,4 @@
+import { Slot } from "expo-router"
 import { Ionicons } from "@expo/vector-icons";
 import {
     Alert,
@@ -10,7 +11,7 @@ import {
 import { categories } from "@/data/categories";
 
 
-export default function RootLayout() {
+export default function TabsLayout() {
     return <View style={styles.container}>
         {/* Header */}
         <View style={styles.header}>
@@ -25,7 +26,8 @@ export default function RootLayout() {
         </View>
 
         {/* Categories */}
-        <ScrollView horizontal>
+        <ScrollView horizontal
+            style={{ flexGrow: 0 }}>
             <View style={styles.categories}>
                 {categories.map((cat) => (
                     <View key={cat} style={styles.category}>
@@ -34,6 +36,8 @@ export default function RootLayout() {
                 ))}
             </View>
         </ScrollView>
+
+        <Slot />
 
         {/* Bottom Navigation */}
         <View style={styles.bottomNav}>
