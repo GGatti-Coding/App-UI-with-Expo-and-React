@@ -25,32 +25,32 @@ export default function HomeScreen() {
           <ScrollView horizontal>
 
             {media
-              .filter((content) => content.progress != undefined )
+              .filter((content) => content.progress != undefined)
               .map((content) => (
 
-              <View key={content.id} style={styles.card}>
-                <Image
-                  source={content.image}
-                  style={styles.cardImage}
-                />
-
-                <View style={styles.cardProgress}>
-                  <View
-                    style={[
-                      styles.progressFill,
-                      {
-                        width: `${content.progress ?? 0}%`,
-                      }
-                    ]}
+                <View key={content.id} style={styles.card}>
+                  <Image
+                    source={content.image}
+                    style={styles.cardImage}
                   />
 
-                </View>
-                <Text style={styles.cardTitle}>
-                  {content.title}
-                </Text>
-              </View>
+                  <View style={styles.cardProgress}>
+                    <View
+                      style={[
+                        styles.progressFill,
+                        {
+                          width: `${content.progress ?? 0}%`,
+                        }
+                      ]}
+                    />
 
-            ))}
+                  </View>
+                  <Text style={styles.cardTitle}>
+                    {content.title}
+                  </Text>
+                </View>
+
+              ))}
 
           </ScrollView>
         </View>
@@ -64,21 +64,21 @@ export default function HomeScreen() {
           <ScrollView horizontal>
 
             {media
-              .filter((content) => content.type == "Game" )
+              .filter((content) => content.type == "Game")
               .map((content) => (
 
-              <View key={content.id} style={styles.card}>
-                <Image
-                  source={content.image}
-                  style={styles.cardImage}
-                />
+                <View key={content.id} style={styles.card}>
+                  <Image
+                    source={content.image}
+                    style={styles.cardImage}
+                  />
 
-                <Text style={styles.cardTitle}>
-                  {content.title}
-                </Text>
-              </View>
+                  <Text style={styles.cardTitle}>
+                    {content.title}
+                  </Text>
+                </View>
 
-            ))}
+              ))}
 
           </ScrollView>
         </View>
@@ -92,7 +92,7 @@ export default function HomeScreen() {
           <ScrollView horizontal>
 
             {media
-              .filter((content) => content.rank != undefined )
+              .filter((content) => content.rank != undefined && content.type == "Game")
               .map((content) => (
 
                 <View key={content.id} style={styles.cardRank}>
@@ -123,25 +123,56 @@ export default function HomeScreen() {
           <ScrollView horizontal>
 
             {media
-              .filter((content) => content.type == "Anime" )
+              .filter((content) => content.type == "Anime")
               .map((content) => (
 
-              <View key={content.id} style={styles.card}>
-                <Image
-                  source={content.image}
-                  style={styles.cardImage}
-                />
+                <View key={content.id} style={styles.card}>
+                  <Image
+                    source={content.image}
+                    style={styles.cardImage}
+                  />
 
-                <Text style={styles.cardTitle}>
-                  {content.title}
-                </Text>
-              </View>
+                  <Text style={styles.cardTitle}>
+                    {content.title}
+                  </Text>
+                </View>
 
-            ))}
+              ))}
 
           </ScrollView>
         </View>
 
+        {/* Top 10 Shows/Movies */}
+        <View>
+          <Text style={styles.sectionTitle}>
+            Top 10 Movies/Shows
+          </Text>
+
+          <ScrollView horizontal>
+
+            {media
+              .filter((content) => content.rank != undefined)
+              .filter((content) => content.type == "Movie" || content.type == "Anime" || content.type == "Show")
+              .map((content) => (
+
+                <View key={content.id} style={styles.cardRank}>
+                  <Image
+                    source={content.image}
+                    style={styles.cardImage}
+                  />
+
+                  <Text style={styles.cardTitle}>
+                    {content.title}
+                  </Text>
+
+                  <Text style={styles.rankText}>
+                    {content.rank}
+                  </Text>
+                </View>
+              ))}
+
+          </ScrollView>
+        </View>
       </ScrollView>
     </View >
   );

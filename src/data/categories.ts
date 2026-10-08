@@ -3,4 +3,8 @@ export const categories = [
     "Movies",
     "Games",
     "Podcasts",
+    "Animes",
+    "Comedy",
+    "Thriller",
+    "Superheroes",
 ];
