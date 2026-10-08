@@ -3,7 +3,7 @@ Group 10 - Guilherme, Jon, Yassine, Jonah, Simon
 All 5 five of us made a different version but this is the one we decided on as a group
 This is a copy of Netflix Home Page
 */
-import { animes, continueWatching, mobileApps } from "@/data/shows";
+import { media } from "@/data/shows";
 import {
   Image,
   ScrollView,
@@ -24,11 +24,13 @@ export default function HomeScreen() {
 
           <ScrollView horizontal>
 
-            {continueWatching.map((show) => (
+            {media
+              .filter((content) => content.progress != undefined )
+              .map((content) => (
 
-              <View key={show.id} style={styles.card}>
+              <View key={content.id} style={styles.card}>
                 <Image
-                  source={show.image}
+                  source={content.image}
                   style={styles.cardImage}
                 />
 
@@ -37,14 +39,14 @@ export default function HomeScreen() {
                     style={[
                       styles.progressFill,
                       {
-                        width: `${show.progress ?? 0}%`,
+                        width: `${content.progress ?? 0}%`,
                       }
                     ]}
                   />
 
                 </View>
                 <Text style={styles.cardTitle}>
-                  {show.title}
+                  {content.title}
                 </Text>
               </View>
 
@@ -61,16 +63,18 @@ export default function HomeScreen() {
 
           <ScrollView horizontal>
 
-            {mobileApps.map((game) => (
+            {media
+              .filter((content) => content.type == "Game" )
+              .map((content) => (
 
-              <View key={game.id} style={styles.card}>
+              <View key={content.id} style={styles.card}>
                 <Image
-                  source={game.image}
+                  source={content.image}
                   style={styles.cardImage}
                 />
 
                 <Text style={styles.cardTitle}>
-                  {game.title}
+                  {content.title}
                 </Text>
               </View>
 
@@ -87,22 +91,22 @@ export default function HomeScreen() {
 
           <ScrollView horizontal>
 
-            {mobileApps
-              .filter((game) => game.rank != undefined )
-              .map((game) => (
+            {media
+              .filter((content) => content.rank != undefined )
+              .map((content) => (
 
-                <View key={game.id} style={styles.cardRank}>
+                <View key={content.id} style={styles.cardRank}>
                   <Image
-                    source={game.image}
+                    source={content.image}
                     style={styles.cardImage}
                   />
 
                   <Text style={styles.cardTitle}>
-                    {game.title}
+                    {content.title}
                   </Text>
 
                   <Text style={styles.rankText}>
-                    {game.rank}
+                    {content.rank}
                   </Text>
                 </View>
               ))}
@@ -113,21 +117,23 @@ export default function HomeScreen() {
         {/* Shounen Anime */}
         <View>
           <Text style={styles.sectionTitle}>
-            Shounen Anime
+            Anime
           </Text>
 
           <ScrollView horizontal>
 
-            {animes.map((show) => (
+            {media
+              .filter((content) => content.type == "Anime" )
+              .map((content) => (
 
-              <View key={show.id} style={styles.card}>
+              <View key={content.id} style={styles.card}>
                 <Image
-                  source={show.image}
+                  source={content.image}
                   style={styles.cardImage}
                 />
 
                 <Text style={styles.cardTitle}>
-                  {show.title}
+                  {content.title}
                 </Text>
               </View>
 
