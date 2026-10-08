@@ -1,4 +1,4 @@
-type ContentType = "Game" | "Show" | "Movie" | "Anime";
+export type ContentType = "Game" | "Show" | "Movie" | "Anime";
 
 interface Content {
     id: number,
