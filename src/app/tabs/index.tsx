@@ -1,7 +1,6 @@
 /*
 Group 10 - Guilherme, Jon, Yassine, Jonah, Simon
-All 5 five of us made a different version but this is the one we decided on as a group
-This is a copy of Netflix Home Page
+Netflix Home Page
 */
 import { media } from "@/data/shows";
 import {
@@ -9,8 +8,17 @@ import {
   ScrollView,
   StyleSheet,
   Text,
-  View
+  View,
+  Pressable
 } from "react-native";
+import { Href, Link } from "expo-router";
+
+const pageFor: Record<string, Href> = {
+  Game: "/game",
+  Movie: "/movie",
+  Show: "/show",
+  Anime: "/show",
+};
 
 export default function HomeScreen() {
   return (
@@ -27,29 +35,29 @@ export default function HomeScreen() {
             {media
               .filter((content) => content.progress != undefined)
               .map((content) => (
-
-                <View key={content.id} style={styles.card}>
-                  <Image
-                    source={content.image}
-                    style={styles.cardImage}
-                  />
-
-                  <View style={styles.cardProgress}>
-                    <View
-                      style={[
-                        styles.progressFill,
-                        {
-                          width: `${content.progress ?? 0}%`,
-                        }
-                      ]}
+                <Link key={content.id} href={pageFor[content.type]} asChild>
+                  <Pressable style={styles.card}>
+                    <Image
+                      source={content.image}
+                      style={styles.cardImage}
                     />
 
-                  </View>
-                  <Text style={styles.cardTitle}>
-                    {content.title}
-                  </Text>
-                </View>
+                    <View style={styles.cardProgress}>
+                      <View
+                        style={[
+                          styles.progressFill,
+                          {
+                            width: `${content.progress ?? 0}%`,
+                          }
+                        ]}
+                      />
 
+                    </View>
+                    <Text style={styles.cardTitle}>
+                      {content.title}
+                    </Text>
+                  </Pressable>
+                </Link>
               ))}
 
           </ScrollView>
@@ -66,18 +74,18 @@ export default function HomeScreen() {
             {media
               .filter((content) => content.type == "Game")
               .map((content) => (
+                <Link key={content.id} href={pageFor[content.type]} asChild>
+                  <Pressable style={styles.card}>
+                    <Image
+                      source={content.image}
+                      style={styles.cardImage}
+                    />
 
-                <View key={content.id} style={styles.card}>
-                  <Image
-                    source={content.image}
-                    style={styles.cardImage}
-                  />
-
-                  <Text style={styles.cardTitle}>
-                    {content.title}
-                  </Text>
-                </View>
-
+                    <Text style={styles.cardTitle}>
+                      {content.title}
+                    </Text>
+                  </Pressable>
+                </Link>
               ))}
 
           </ScrollView>
@@ -94,21 +102,22 @@ export default function HomeScreen() {
             {media
               .filter((content) => content.rank != undefined && content.type == "Game")
               .map((content) => (
+                <Link key={content.id} href={pageFor[content.type]} asChild>
+                  <Pressable style={styles.cardRank}>
+                    <Image
+                      source={content.image}
+                      style={styles.cardImage}
+                    />
 
-                <View key={content.id} style={styles.cardRank}>
-                  <Image
-                    source={content.image}
-                    style={styles.cardImage}
-                  />
+                    <Text style={styles.cardTitle}>
+                      {content.title}
+                    </Text>
 
-                  <Text style={styles.cardTitle}>
-                    {content.title}
-                  </Text>
-
-                  <Text style={styles.rankText}>
-                    {content.rank}
-                  </Text>
-                </View>
+                    <Text style={styles.rankText}>
+                      {content.rank}
+                    </Text>
+                  </Pressable>
+                </Link>
               ))}
 
           </ScrollView>
@@ -125,18 +134,18 @@ export default function HomeScreen() {
             {media
               .filter((content) => content.type == "Anime")
               .map((content) => (
+                <Link key={content.id} href={pageFor[content.type]} asChild>
+                  <Pressable style={styles.card}>
+                    <Image
+                      source={content.image}
+                      style={styles.cardImage}
+                    />
 
-                <View key={content.id} style={styles.card}>
-                  <Image
-                    source={content.image}
-                    style={styles.cardImage}
-                  />
-
-                  <Text style={styles.cardTitle}>
-                    {content.title}
-                  </Text>
-                </View>
-
+                    <Text style={styles.cardTitle}>
+                      {content.title}
+                    </Text>
+                  </Pressable>
+                </Link>
               ))}
 
           </ScrollView>
@@ -154,21 +163,22 @@ export default function HomeScreen() {
               .filter((content) => content.rank != undefined)
               .filter((content) => content.type == "Movie" || content.type == "Anime" || content.type == "Show")
               .map((content) => (
+                <Link key={content.id} href={pageFor[content.type]} asChild>
+                  <Pressable key={content.id} style={styles.cardRank}>
+                    <Image
+                      source={content.image}
+                      style={styles.cardImage}
+                    />
 
-                <View key={content.id} style={styles.cardRank}>
-                  <Image
-                    source={content.image}
-                    style={styles.cardImage}
-                  />
+                    <Text style={styles.cardTitle}>
+                      {content.title}
+                    </Text>
 
-                  <Text style={styles.cardTitle}>
-                    {content.title}
-                  </Text>
-
-                  <Text style={styles.rankText}>
-                    {content.rank}
-                  </Text>
-                </View>
+                    <Text style={styles.rankText}>
+                      {content.rank}
+                    </Text>
+                  </Pressable>
+                </Link>
               ))}
 
           </ScrollView>
