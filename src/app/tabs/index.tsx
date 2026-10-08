@@ -11,14 +11,7 @@ import {
   View,
   Pressable
 } from "react-native";
-import { Href, Link } from "expo-router";
-
-const pageFor: Record<string, Href> = {
-  Game: "/game",
-  Movie: "/movie",
-  Show: "/show",
-  Anime: "/show",
-};
+import { Link } from "expo-router";
 
 export default function HomeScreen() {
   return (
@@ -35,7 +28,7 @@ export default function HomeScreen() {
             {media
               .filter((content) => content.progress != undefined)
               .map((content) => (
-                <Link key={content.id} href={pageFor[content.type]} asChild>
+                <Link key={content.id} href={`/details/${content.id}`} asChild>
                   <Pressable style={styles.card}>
                     <Image
                       source={content.image}
@@ -74,7 +67,7 @@ export default function HomeScreen() {
             {media
               .filter((content) => content.type == "Game")
               .map((content) => (
-                <Link key={content.id} href={pageFor[content.type]} asChild>
+                <Link key={content.id} href={`/details/${content.id}`} asChild>
                   <Pressable style={styles.card}>
                     <Image
                       source={content.image}
@@ -102,7 +95,7 @@ export default function HomeScreen() {
             {media
               .filter((content) => content.rank != undefined && content.type == "Game")
               .map((content) => (
-                <Link key={content.id} href={pageFor[content.type]} asChild>
+                <Link key={content.id} href={`/details/${content.id}`} asChild>
                   <Pressable style={styles.cardRank}>
                     <Image
                       source={content.image}
@@ -134,7 +127,7 @@ export default function HomeScreen() {
             {media
               .filter((content) => content.type == "Anime")
               .map((content) => (
-                <Link key={content.id} href={pageFor[content.type]} asChild>
+                <Link key={content.id} href={`/details/${content.id}`} asChild>
                   <Pressable style={styles.card}>
                     <Image
                       source={content.image}
@@ -163,7 +156,7 @@ export default function HomeScreen() {
               .filter((content) => content.rank != undefined)
               .filter((content) => content.type == "Movie" || content.type == "Anime" || content.type == "Show")
               .map((content) => (
-                <Link key={content.id} href={pageFor[content.type]} asChild>
+                <Link key={content.id} href={`/details/${content.id}`} asChild>
                   <Pressable key={content.id} style={styles.cardRank}>
                     <Image
                       source={content.image}

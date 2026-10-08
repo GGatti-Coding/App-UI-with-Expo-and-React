@@ -1,4 +1,4 @@
-import { Slot } from "expo-router"
+import { Stack } from "expo-router"
 import { Ionicons } from "@expo/vector-icons";
 import {
     Alert,
@@ -12,60 +12,62 @@ import { categories } from "@/data/categories";
 
 
 export default function TabsLayout() {
-    return <View style={styles.container}>
-        {/* Header */}
-        <View style={styles.header}>
+    return (
+        <View style={styles.container}>
+            {/* Header */}
+            <View style={styles.header}>
 
-            <Text style={styles.logo}>N</Text>
-            <Text style={styles.title}>Home</Text>
+                <Text style={styles.logo}>N</Text>
+                <Text style={styles.title}>Home</Text>
 
-            <View style={styles.headerIcons}>
-                <Ionicons name="download-outline" size={25} color="white" />
-                <Ionicons name="notifications-outline" size={25} color="white" />
+                <View style={styles.headerIcons}>
+                    <Ionicons name="download-outline" size={25} color="white" />
+                    <Ionicons name="notifications-outline" size={25} color="white" />
+                </View>
             </View>
+
+            {/* Categories */}
+            <ScrollView horizontal
+                style={{ flexGrow: 0 }}>
+                <View style={styles.categories}>
+                    {categories.map((cat) => (
+                        <View key={cat} style={styles.category}>
+                            <Text style={styles.categoryText}>{cat}</Text>
+                        </View>
+                    ))}
+                </View>
+            </ScrollView>
+
+            <Stack screenOptions={{ headerShown: false }} />
+
+            {/* Bottom Navigation */}
+            <View style={styles.bottomNav}>
+                {/* Home */}
+                <View style={styles.navItem}>
+                    <Ionicons name="home" size={24} color="white" />
+                    <Text style={styles.navText}>Home</Text>
+                </View>
+                {/* Search */}
+                <View style={styles.navItem}>
+                    <Ionicons name="search" size={24} color="white" />
+                    <Text style={styles.navText}>Search</Text>
+                </View>
+                {/* My Netflix */}
+                <View style={styles.navItem}>
+                    <Ionicons name="person" size={24} color="white" />
+                    <Text style={styles.navText}>My Netflix</Text>
+                </View>
+            </View>
+
+            {/* Alert Button */}
+            <Button
+                title="Alert"
+                onPress={() => {
+                    Alert.alert("Alert Button pressed");
+                }}
+            />
         </View>
-
-        {/* Categories */}
-        <ScrollView horizontal
-            style={{ flexGrow: 0 }}>
-            <View style={styles.categories}>
-                {categories.map((cat) => (
-                    <View key={cat} style={styles.category}>
-                        <Text style={styles.categoryText}>{cat}</Text>
-                    </View>
-                ))}
-            </View>
-        </ScrollView>
-
-        <Slot />
-
-        {/* Bottom Navigation */}
-        <View style={styles.bottomNav}>
-            {/* Home */}
-            <View style={styles.navItem}>
-                <Ionicons name="home" size={24} color="white" />
-                <Text style={styles.navText}>Home</Text>
-            </View>
-            {/* Search */}
-            <View style={styles.navItem}>
-                <Ionicons name="search" size={24} color="white" />
-                <Text style={styles.navText}>Search</Text>
-            </View>
-            {/* My Netflix */}
-            <View style={styles.navItem}>
-                <Ionicons name="person" size={24} color="white" />
-                <Text style={styles.navText}>My Netflix</Text>
-            </View>
-        </View>
-
-        {/* Alert Button */}
-        <Button
-            title="Alert"
-            onPress={() => {
-                Alert.alert("Alert Button pressed");
-            }}
-        />
-    </View>
+    );
 }
 
 const styles = StyleSheet.create({
