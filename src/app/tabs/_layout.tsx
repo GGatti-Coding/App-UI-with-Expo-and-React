@@ -1,4 +1,4 @@
-import { Stack } from "expo-router"
+import { Stack, router } from "expo-router"
 import { Ionicons } from "@expo/vector-icons";
 import {
     Alert,
@@ -7,6 +7,7 @@ import {
     StyleSheet,
     Text,
     View,
+    Pressable,
 } from "react-native";
 import { categories } from "@/data/categories";
 
@@ -22,7 +23,9 @@ export default function TabsLayout() {
 
                 <View style={styles.headerIcons}>
                     <Ionicons name="download-outline" size={25} color="white" />
-                    <Ionicons name="notifications-outline" size={25} color="white" />
+                    <Pressable onPress={() => router.push("/notifications")}>
+                        <Ionicons name="notifications-outline" size={25} color="white" />
+                    </Pressable>
                 </View>
             </View>
 
