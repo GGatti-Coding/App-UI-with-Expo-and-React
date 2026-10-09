@@ -21,7 +21,9 @@ export default function TabsLayout() {
 
             <View style={styles.headerIcons}>
                 <Ionicons name="download-outline" size={25} color="white" />
-                <Ionicons name="notifications-outline" size={25} color="white" />
+                <Pressable onPress= {() => router.push("/notifications")}>
+                    <Ionicons name="notifications-outline" size={25} color="white" />
+                </Pressable>
             </View>
         </View>
 
