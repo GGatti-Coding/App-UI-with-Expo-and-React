@@ -1,13 +1,15 @@
+// The shape of one notification. Every item in the list must have these fields.
 export type NotificationType = {
-  id: string;
-  title: string;
-  message: string;
-  date: string;
-  image: any;
-  unread: boolean;
-  movieId: string;
+  id: string; // unique id, used as the list key
+  title: string; // bold line for notification title
+  message: string; // grey line under the title
+  date: string; // shown under the message
+  image: any; // local image loaded with require(...)
+  unread: boolean; // true shows the red dot
+  movieId: string; // id passed to the Movie Details screen when tapped (this won't be implemented since we're not creating a notification to movie details path)
 };
 
+// Mock data for the Notifications screen
 export const notifications: NotificationType[] = [
   {
     id: "1",
@@ -24,6 +26,7 @@ export const notifications: NotificationType[] = [
     title: "A top sci-fi title picked just for you",
     message: "Check out Mickey 17",
     date: "Oct 3",
+    // Path is relative to this file: up two folders, then into assets
     image: require("../../assets/images/notifications/animenot2.webp"),
     unread: true,
     movieId: "2",
