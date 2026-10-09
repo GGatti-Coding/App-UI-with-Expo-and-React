@@ -5,13 +5,14 @@ import { FlatList, Pressable, StyleSheet, Text, View } from "react-native";
 import NotificationItem from "../components/NotificationItem";
 import { notifications } from "../data/notifications";
 
-
 export default function NotificationsScreen() {
   const router = useRouter();
+  // Copy of the data in state, so a row can be marked as read
   const [items, setItems] = useState(notifications);
 
   return (
     <View style={styles.container}>
+      {/* Header: back arrow and title */}
       <Stack.Screen
         options={{
           headerLeft: () => (
@@ -36,6 +37,7 @@ export default function NotificationsScreen() {
           headerShadowVisible: false,
         }}
       />
+      {/* List of notifications */}
       <FlatList
         showsVerticalScrollIndicator={false}
         data={items}
@@ -46,6 +48,7 @@ export default function NotificationsScreen() {
             item={item}
             onPress={() => {
               router.push(`/movie/${item.movieId}`);
+              // Mark the tapped notification as read
               setItems((prevItems) =>
                 prevItems.map((prevItem) =>
                   prevItem.id === item.id
@@ -57,7 +60,8 @@ export default function NotificationsScreen() {
           />
         )}
       />
-       <View style={styles.bottomNav}>
+      {/* Temporary nav bar: remove when the layout uses real tabs */}
+      <View style={styles.bottomNav}>
         <View style={styles.navItem}>
           <Ionicons name="home" size={24} color="white" />
           <Text style={styles.navText}>Home</Text>
