@@ -16,7 +16,7 @@ function RootStack() {
           contentStyle: { backgroundColor: colors.background },
         }}
       >
-        <Stack.Screen name="tabs" />
+        <Stack.Screen name="(tabs)" />
         <Stack.Screen
           name="show/[id]"
           options={{ animation: "slide_from_bottom" }}
