@@ -1,3 +1,7 @@
+/*
+@author Guilherme
+Array for the content
+*/
 export type ContentType = "Game" | "Show" | "Movie" | "Anime";
 
 interface Content {
@@ -19,6 +23,7 @@ export const media: Content[] = [
     type: "Anime",
     title: "JJBA",
     image: require("../../assets/images/continue/show1.jpg"),
+    episodes: 48,
     progress: 60,
     rank: 1,
     description: "Placeholder",
@@ -27,6 +32,7 @@ export const media: Content[] = [
     id: 2,
     type: "Anime",
     title: "Saiki K",
+    episodes: 12,
     image: require("../../assets/images/continue/show2.jpg"),
     progress: 30,
     description: "Placeholder",
@@ -35,6 +41,7 @@ export const media: Content[] = [
     id: 3,
     type: "Anime",
     title: "Pokemon",
+    episodes: 20,
     image: require("../../assets/images/continue/show3.jpg"),
     progress: 80,
     description: "Placeholder",
@@ -43,6 +50,7 @@ export const media: Content[] = [
     id: 4,
     type: "Anime",
     title: "Steel Ball Run",
+    episodes: 4,
     image: require("../../assets/images/anime/animes1.jpg"),
     description: "Placeholder",
   },
@@ -50,6 +58,7 @@ export const media: Content[] = [
     id: 5,
     type: "Anime",
     title: "Death Note",
+    episodes: 28,
     image: require("../../assets/images/anime/animes2.jpg"),
     rank: 2,
     description: "Placeholder",
@@ -58,6 +67,7 @@ export const media: Content[] = [
     id: 6,
     type: "Anime",
     title: "Sakamoto Days",
+    episodes: 12,
     image: require("../../assets/images/anime/animes3.jpg"),
     description: "Placeholder",
   },

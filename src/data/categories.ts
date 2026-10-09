@@ -1,3 +1,7 @@
+/*
+@author Guilherme
+Array for the categories
+*/
 export const categories = [
     "Shows",
     "Movies",

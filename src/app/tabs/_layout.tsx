@@ -1,3 +1,7 @@
+/*
+Group 10 - Guilherme, Jon, Yassine, Jonah, Simon
+Header, Categories, Navbar
+*/
 import { Stack, router } from "expo-router"
 import { Ionicons } from "@expo/vector-icons";
 import {

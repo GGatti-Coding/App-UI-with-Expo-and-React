@@ -1,3 +1,8 @@
+/*
+@author Guilherme Gatti
+This is the page for each movie, game or show.
+Aspects will show up depending on whether information present in their array.
+*/
 import { media } from "@/data/shows";
 import { Ionicons } from "@expo/vector-icons";
 import { useLocalSearchParams, useRouter } from "expo-router";
