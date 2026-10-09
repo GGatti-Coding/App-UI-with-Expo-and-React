@@ -1,4 +1,4 @@
-import { Slot } from "expo-router"
+import { Slot} from "expo-router"
 import { Ionicons } from "@expo/vector-icons";
 import {
     Alert,
