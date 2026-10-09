@@ -23,13 +23,13 @@ export default function TabsLayout() {
 
                 <View style={styles.headerIcons}>
                     <Ionicons name="download-outline" size={25} color="white" />
-                    <Pressable onPress={() => router.push("/notifications")}>
-                        <Ionicons name="notifications-outline" size={25} color="white" />
-                    </Pressable>
-                </View>
+                    <Pressable onPress={() => router.push("/notifications") }>
+                    <Ionicons name="notifications-outline" size={25} color="white" />
+                </Pressable>
             </View>
+        </View>
 
-            {/* Categories */}
+            {/* Categories */ }
             <ScrollView horizontal
                 style={{ flexGrow: 0 }}>
                 <View style={styles.categories}>
@@ -43,33 +43,33 @@ export default function TabsLayout() {
 
             <Stack screenOptions={{ headerShown: false }} />
 
-            {/* Bottom Navigation */}
-            <View style={styles.bottomNav}>
-                {/* Home */}
-                <View style={styles.navItem}>
-                    <Ionicons name="home" size={24} color="white" />
-                    <Text style={styles.navText}>Home</Text>
-                </View>
-                {/* Search */}
-                <View style={styles.navItem}>
-                    <Ionicons name="search" size={24} color="white" />
-                    <Text style={styles.navText}>Search</Text>
-                </View>
-                {/* My Netflix */}
-                <View style={styles.navItem}>
-                    <Ionicons name="person" size={24} color="white" />
-                    <Text style={styles.navText}>My Netflix</Text>
-                </View>
-            </View>
-
-            {/* Alert Button */}
-            <Button
-                title="Alert"
-                onPress={() => {
-                    Alert.alert("Alert Button pressed");
-                }}
-            />
+    {/* Bottom Navigation */ }
+    <View style={styles.bottomNav}>
+        {/* Home */}
+        <View style={styles.navItem}>
+            <Ionicons name="home" size={24} color="white" />
+            <Text style={styles.navText}>Home</Text>
         </View>
+        {/* Search */}
+        <View style={styles.navItem}>
+            <Ionicons name="search" size={24} color="white" />
+            <Text style={styles.navText}>Search</Text>
+        </View>
+        {/* My Netflix */}
+        <View style={styles.navItem}>
+            <Ionicons name="person" size={24} color="white" />
+            <Text style={styles.navText}>My Netflix</Text>
+        </View>
+    </View>
+
+    {/* Alert Button */ }
+    <Button
+        title="Alert"
+        onPress={() => {
+            Alert.alert("Alert Button pressed");
+        }}
+    />
+        </View >
     );
 }
 
@@ -83,7 +83,8 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         alignItems: "center",
         paddingHorizontal: 15,
-        paddingVertical: 15,
+        paddingTop: 35,
+        paddingBottom: 15,
         marginLeft: 3,
     },
 

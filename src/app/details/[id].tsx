@@ -11,7 +11,6 @@ import {
     TouchableOpacity,
     View,
 } from "react-native";
-import { withSafeAreaInsets } from "react-native-safe-area-context";
 
 export default function DetailsScreen() {
     const { id } = useLocalSearchParams();
@@ -82,7 +81,7 @@ export default function DetailsScreen() {
                     {item.progress != undefined && (
                         <View style={styles.progressBar}>
                             <View style={[styles.progressFill,
-                                {width: `${item.progress}%`}]}/>
+                            { width: `${item.progress}%` }]} />
                         </View>
                     )}
 
@@ -90,6 +89,38 @@ export default function DetailsScreen() {
                         <Text style={styles.description}>{item.description}</Text>
                     )}
                 </View>
+
+                {/* My List / Rate / Share */}
+                <View style={styles.actions}>
+                    <View style={styles.action}>
+                        <Ionicons name="add" size={28} color="white" />
+                        <Text style={styles.actionText}>My List</Text>
+                    </View>
+                    <View style={styles.action}>
+                        <Ionicons name="thumbs-up-outline" size={26} color="white" />
+                        <Text style={styles.actionText}>Rate</Text>
+                    </View>
+                    <View style={styles.action}>
+                        <Ionicons name="share-social-outline" size={26} color="white" />
+                        <Text style={styles.actionText}>Share</Text>
+                    </View>
+                </View>
+
+                {/* Episode List, only if id has episodes */}
+                {item.episodes != undefined && (
+                    <View>
+                        <View style={styles.tab}>
+                            <Text style={styles.tabText}>Episodes</Text>
+                        </View>
+                        {episodeList.map((number) => (
+                            <View key={number} style={styles.episode}>
+                                <Text style={styles.episodeTitle}>Episode {number}</Text>
+                                <Ionicons name="download-outline" size={24} color="white" />
+                            </View>
+                        ))}
+                    </View>
+                )}
+
             </ScrollView>
         </View>
     );
@@ -215,5 +246,49 @@ const styles = StyleSheet.create({
         fontSize: 14,
         lineHeight: 20,
         marginTop: 15,
+    },
+
+    actions: {
+        flexDirection: "row",
+        justifyContent: "space-around",
+        marginTop: 10,
+    },
+
+    action: {
+        alignItems: "center",
+    },
+
+    actionText: {
+        color: "gray",
+        fontSize: 12,
+        marginTop: 4,
+    },
+
+    tab: {
+        alignSelf: "flex-start",
+        borderTopWidth: 3,
+        borderTopColor: "#E50914",
+        paddingTop: 8,
+        marginTop: 25,
+        marginLeft: 15,
+    },
+
+    tabText: {
+        color: "white",
+        fontSize: 15,
+        fontWeight: "bold",
+    },
+
+    episode: {
+        flexDirection: "row",
+        alignItems: "center",
+        paddingHorizontal: 15,
+        paddingVertical: 12,
+    },
+
+    episodeTitle: {
+        flex: 1,
+        color: "white",
+        fontSize: 14,
     },
 });
