@@ -18,7 +18,7 @@ export default function NotificationsScreen() {
             <Pressable
               style={{ marginLeft: 1 }}
               onPress={() => {
-                router.canGoBack() ? router.back() : router.replace("/");
+                router.canGoBack() ? router.back() : router.replace("/index");
               }}
             >
               <Ionicons name="arrow-back" size={26} color="#fff" />
