@@ -1,3 +1,6 @@
+/*
+@author Ahmed Yassine Messaoudi
+*/
 // The shape of one notification. Every item in the list must have these fields.
 export type NotificationType = {
   id: string; // unique id, used as the list key

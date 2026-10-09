@@ -1,3 +1,6 @@
+/*
+@author Ahmed Yassine Messaoudi
+*/
 import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 import { NotificationType } from "../data/notifications";
 
