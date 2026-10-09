@@ -60,10 +60,10 @@ export default function TabsLayout() {
             <Text style={styles.navText}>Search</Text>
         </View>
         {/* My Netflix */}
-        <View style={styles.navItem}>
+        <Pressable style={styles.navItem} onPress={() => router.push("/profile")}>
             <Ionicons name="person" size={24} color="white" />
             <Text style={styles.navText}>My Netflix</Text>
-        </View>
+        </Pressable>
     </View>
 
     {/* Alert Button */ }
