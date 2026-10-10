@@ -1,5 +1,6 @@
 import { Ionicons } from "@expo/vector-icons";
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { useRouter } from "expo-router";
+import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { categories } from "@/data/categories";
 import { useTheme } from "@/context/ThemeContext";
 
@@ -7,13 +8,17 @@ import { useTheme } from "@/context/ThemeContext";
 // This used to live in the layout; now it belongs to the Home screen only.
 export default function HomeHeader() {
   const { colors } = useTheme();
+  const router = useRouter();
+
   return (
     <View>
       <View style={styles.header}>
         <Text style={styles.logo}>N</Text>
         <Text style={[styles.title, { color: colors.text }]}>Home</Text>
         <View style={styles.headerIcons}>
-          <Ionicons name="download-outline" size={25} color={colors.text} />
+          <Pressable onPress={() => router.push("/downloads")} hitSlop={10}>
+            <Ionicons name="download-outline" size={25} color={colors.text} />
+          </Pressable>
           <Ionicons name="notifications-outline" size={25} color={colors.text} />
         </View>
       </View>
