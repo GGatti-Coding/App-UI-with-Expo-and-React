@@ -6,7 +6,6 @@ import { useTheme } from "@/context/ThemeContext";
 
 type IconName = ComponentProps<typeof Ionicons>["name"];
 
-// Small helper so each tab only needs two icon names.
 function tabIcon(active: IconName, inactive: IconName) {
   return ({ color, focused }: { color: ColorValue; focused: boolean }) => (
     <Ionicons name={focused ? active : inactive} size={24} color={color} />
@@ -23,7 +22,6 @@ export default function TabsLayout() {
         tabBarActiveTintColor: colors.text,
         tabBarInactiveTintColor: colors.subtext,
         tabBarLabelStyle: { fontSize: 11 },
-        // Floating pill, same look as the old hand-made bottomNav
         tabBarStyle: {
           position: "absolute",
           bottom: 30,

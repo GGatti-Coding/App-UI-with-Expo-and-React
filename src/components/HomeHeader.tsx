@@ -2,19 +2,23 @@ import { Ionicons } from "@expo/vector-icons";
 import { ScrollView, StyleSheet, Text, View, Pressable } from "react-native";
 import { categories } from "@/data/categories";
 import { useTheme } from "@/context/ThemeContext";
-import { router } from "expo-router"
+import { useRouter } from "expo-router"
 
 // The "N / Home / icons" bar plus the category pills.
 // This used to live in the layout; now it belongs to the Home screen only.
 export default function HomeHeader() {
   const { colors } = useTheme();
+  const router = useRouter();
+
   return (
     <View>
       <View style={styles.header}>
         <Text style={[styles.logo, { color: colors.accent }]}>N</Text>
         <Text style={[styles.title, { color: colors.text }]}>Home</Text>
         <View style={styles.headerIcons}>
+          <Pressable onPress={() => router.push("/downloads")}>
           <Ionicons name="download-outline" size={25} color={colors.text} />
+          </Pressable>
           <Pressable onPress={() => router.push("/notifications")}>
             <Ionicons name="notifications-outline" size={25} color={colors.text} />
           </Pressable>

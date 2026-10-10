@@ -21,9 +21,8 @@ function RootStack() {
           name="details/[id]"
           options={{ animation: "slide_from_bottom" }}
         />
-        <Stack.Screen
-          name="notifications"
-        />
+        <Stack.Screen name="notifications" />
+        <Stack.Screen name="downloads" />
       </Stack>
     </>
   );
