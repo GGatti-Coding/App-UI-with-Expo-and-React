@@ -3,6 +3,7 @@
 */
 import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 import { NotificationType } from "../data/notifications";
+import { useTheme } from "@/context/ThemeContext";
 
 // The component receives one notification and a function to run on tap
 type Props = {
@@ -11,6 +12,8 @@ type Props = {
 };
 
 export default function NotificationItem({ item, onPress }: Props) {
+  const { colors } = useTheme();
+
   return (
     // The whole row is tappable
     <Pressable style={styles.row} onPress={onPress}>
@@ -18,17 +21,17 @@ export default function NotificationItem({ item, onPress }: Props) {
       <View
         style={[
           styles.dot,
-          { backgroundColor: item.unread ? "#FF0000" : "transparent" },
+          { backgroundColor: item.unread ? colors.accent : "transparent" },
         ]}
       />
       {/* Thumbnail, title, description and date */}
       <Image source={item.image} style={styles.image} />
       <View style={styles.textBlock}>
-        <Text style={styles.title}>{item.title}</Text>
-        <Text style={styles.message} numberOfLines={1}>
+        <Text style={[styles.title, { color: colors.text }]}>{item.title}</Text>
+        <Text style={[styles.message, { color: colors.subtext }]} numberOfLines={1}>
           {item.message}
         </Text>
-        <Text style={styles.date}>{item.date}</Text>
+        <Text style={[styles.date, { color: colors.subtext }]}>{item.date}</Text>
       </View>
     </Pressable>
   );
@@ -60,15 +63,12 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 18,
-    color: "#FFFFFF",
     fontWeight: "400",
   },
   message: {
-    color: "#808080",
     fontSize: 15,
   },
   date: {
     fontSize: 12,
-    color: "#696969",
   },
 });

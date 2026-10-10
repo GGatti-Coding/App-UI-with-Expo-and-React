@@ -4,7 +4,7 @@ Array for the content
 */
 export type ContentType = "Game" | "Show" | "Movie" | "Anime";
 
-interface Content {
+export interface Content {
     id: number,
     type: ContentType,
     title: string,

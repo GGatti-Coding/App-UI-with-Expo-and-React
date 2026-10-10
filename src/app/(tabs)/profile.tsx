@@ -1,41 +1,53 @@
 /*
 @author Jonah Rideout
-Profile ("My Netflix") page. Opens as a sheet from the bottom nav.
+Profile ("My Netflix") page. The third tab in the bottom bar.
 */
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
-import MenuRow from "../components/MenuRow";
-import ProfileAvatar from "../components/ProfileAvatar";
-import { currentProfile, otherProfiles } from "../data/profiles";
+import MenuRow from "../../components/MenuRow";
+import ProfileAvatar from "../../components/ProfileAvatar";
+import { useTheme } from "@/context/ThemeContext";
+import { currentProfile, otherProfiles } from "../../data/profiles";
 
 export default function ProfileScreen() {
   const router = useRouter();
+  const { theme, toggleTheme, colors } = useTheme();
 
   return (
-    <View style={styles.container}>
-      <View style={styles.sheet}>
+    <View style={[styles.container, { backgroundColor: colors.background }]}>
+      <View style={[styles.sheet, { backgroundColor: colors.surface }]}>
         {/* Drag handle, title and close button */}
-        <View style={styles.handle} />
+        <View style={[styles.handle, { backgroundColor: colors.border }]} />
         <View style={styles.titleRow}>
-          <Text style={styles.title}>Profile</Text>
-          <Pressable style={styles.closeButton} onPress={() => router.back()}>
-            <Ionicons name="close" size={20} color="#fff" />
+          <Text style={[styles.title, { color: colors.text }]}>Profile</Text>
+          <Pressable
+            style={[styles.closeButton, { backgroundColor: colors.border }]}
+            onPress={() => router.back()}
+          >
+            <Ionicons name="close" size={20} color={colors.text} />
           </Pressable>
         </View>
 
-        <ScrollView showsVerticalScrollIndicator={false}>
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={styles.scrollContent}
+        >
           {/* Current profile card */}
-          <View style={styles.currentCard}>
+          <View style={[styles.currentCard, { backgroundColor: colors.background }]}>
             <ProfileAvatar profile={currentProfile} size={88} radius={12} />
             <Pressable style={styles.editButton}>
-              <Ionicons name="pencil-outline" size={22} color="#fff" />
+              <Ionicons name="pencil-outline" size={22} color={colors.text} />
             </Pressable>
-            <Text style={styles.currentName}>{currentProfile.name}</Text>
+            <Text style={[styles.currentName, { color: colors.text }]}>
+              {currentProfile.name}
+            </Text>
             {currentProfile.gameHandle != undefined && (
               <View style={styles.handleRow}>
-                <Ionicons name="game-controller-outline" size={18} color="#aaa" />
-                <Text style={styles.handleText}>{currentProfile.gameHandle}</Text>
+                <Ionicons name="game-controller-outline" size={18} color={colors.subtext} />
+                <Text style={[styles.handleText, { color: colors.subtext }]}>
+                  {currentProfile.gameHandle}
+                </Text>
               </View>
             )}
           </View>
@@ -45,18 +57,23 @@ export default function ProfileScreen() {
             {otherProfiles.map((profile) => (
               <View key={profile.id} style={styles.otherItem}>
                 <ProfileAvatar profile={profile} size={56} radius={8} />
-                <Text style={styles.otherName}>{profile.name}</Text>
+                <Text style={[styles.otherName, { color: colors.text }]}>{profile.name}</Text>
               </View>
             ))}
           </View>
 
           {/* Manage Profiles button (doesn't do anything) */}
-          <Pressable style={styles.manageButton}>
-            <Text style={styles.manageText}>Manage Profiles</Text>
+          <Pressable style={[styles.manageButton, { backgroundColor: colors.background }]}>
+            <Text style={[styles.manageText, { color: colors.text }]}>Manage Profiles</Text>
           </Pressable>
 
           {/* Menu */}
           <View style={styles.menu}>
+            <MenuRow
+              icon={theme === "dark" ? "sunny-outline" : "moon-outline"}
+              label={theme === "dark" ? "Light Mode" : "Dark Mode"}
+              onPress={toggleTheme}
+            />
             <MenuRow icon="settings-outline" label="App Settings" />
             <MenuRow icon="person-outline" label="Account" />
             <MenuRow icon="help-circle-outline" label="Help" />
@@ -71,17 +88,20 @@ export default function ProfileScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "black",
   },
 
-  // The dark sheet with rounded top corners
+  // The sheet with rounded top corners
   sheet: {
     flex: 1,
     marginTop: 40,
-    backgroundColor: "#1C1C1C",
     borderTopLeftRadius: 24,
     borderTopRightRadius: 24,
     paddingHorizontal: 14,
+  },
+
+  // extra bottom space so the floating tab bar never covers the last row
+  scrollContent: {
+    paddingBottom: 130,
   },
 
   handle: {
@@ -89,7 +109,6 @@ const styles = StyleSheet.create({
     width: 30,
     height: 4,
     borderRadius: 2,
-    backgroundColor: "#666",
     marginTop: 25,
   },
 
@@ -101,7 +120,6 @@ const styles = StyleSheet.create({
   },
 
   title: {
-    color: "#fff",
     fontSize: 20,
     fontWeight: "bold",
   },
@@ -113,14 +131,12 @@ const styles = StyleSheet.create({
     width: 28,
     height: 28,
     borderRadius: 14,
-    backgroundColor: "#444",
     alignItems: "center",
     justifyContent: "center",
   },
 
   currentCard: {
     marginTop: 6,
-    backgroundColor: "#2B2B2B",
     borderRadius: 24,
     alignItems: "center",
     paddingTop: 8,
@@ -134,7 +150,6 @@ const styles = StyleSheet.create({
   },
 
   currentName: {
-    color: "#fff",
     fontSize: 16,
     fontWeight: "bold",
     marginTop: 8,
@@ -147,7 +162,6 @@ const styles = StyleSheet.create({
   },
 
   handleText: {
-    color: "#aaa",
     fontSize: 15,
     marginLeft: 6,
   },
@@ -164,7 +178,6 @@ const styles = StyleSheet.create({
   },
 
   otherName: {
-    color: "#fff",
     fontSize: 13,
     fontWeight: "bold",
     marginTop: 4,
@@ -172,7 +185,6 @@ const styles = StyleSheet.create({
 
   manageButton: {
     alignSelf: "center",
-    backgroundColor: "#2B2B2B",
     borderRadius: 20,
     paddingVertical: 9,
     paddingHorizontal: 22,
@@ -180,7 +192,6 @@ const styles = StyleSheet.create({
   },
 
   manageText: {
-    color: "#fff",
     fontSize: 15,
     fontWeight: "bold",
   },
